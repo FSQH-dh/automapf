@@ -194,10 +194,11 @@ void TaskManager::reveal_tasks(int timestep)
     }
 
     // Check if the condition to save files is met
-    if (((float)(clock() - start)) / CLOCKS_PER_SEC > 4999) {
+    if (((float)(clock() - start)) / CLOCKS_PER_SEC > 450) {
+    cout<<((float)(clock() - start)) / CLOCKS_PER_SEC<<endl;
         // File paths for results and finished markers
-        std::string save_results = "./temp/results/1_0.txt";
-        std::string finished_file = "./temp/results/finished1_0.txt";
+        std::string save_results = "./temp/results/0_0.txt";
+        std::string finished_file = "./temp/results/finished0_0.txt";
 
         // Write to the results file
         std::ofstream outfile(save_results, std::ios::app);
@@ -205,18 +206,13 @@ void TaskManager::reveal_tasks(int timestep)
             outfile << "File name\tDuration\tSituation" << std::endl;
             outfile << "12\t" << 200000 - task_id << "\tSATISFIABLE" << std::endl;
             outfile.close();
-            logger->log_info("Results written to " + save_results);
-        } else {
-            logger->log_error("Failed to open results file: " + save_results);
-        }
 
+        }
         // Create the finished marker file
         std::ofstream finished(finished_file, std::ios::app);
         if (finished.is_open()) {
             finished.close();
-            logger->log_info("Finished marker created at " + finished_file);
-        } else {
-            logger->log_error("Failed to create finished marker file: " + finished_file);
+            exit(0);
         }
     }
 }

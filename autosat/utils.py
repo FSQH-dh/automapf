@@ -47,9 +47,11 @@ def clean_files(folder_path, mode, *args, **kwargs):
         pass
     else:
         raise NotImplemented
-
-
+global_anum = 0
 def process_raw_results(folder_path, timeout, answers=None):
+    global global_anum
+    if(global_anum==6):
+       global_anum = 0
     result = {
         "time": {},
         "prompt": {},
@@ -63,6 +65,8 @@ def process_raw_results(folder_path, timeout, answers=None):
         match = re.match(r'(\d+)_(\d+).txt', filename)
         if match:
             id, num = match.groups() # Notice, id(key of result / results): str
+            id = str(global_anum)
+            global_anum+=1
             file_path = os.path.join(folder_path, filename)
             if os.path.isfile(file_path):
                 tmp_total_time = 0

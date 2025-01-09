@@ -219,7 +219,7 @@ class ZhiPuCallAPI(BaseCallAPI):
         # return response_json
         return response_json['choices'][0]['message']['content']
 def fastllm(prompt , args):
-    if args.llm_model == "gpt-4-turbo":
+    if args.llm_model in ("gpt-4-turbo,gpt-4o-mini,gpt-4o-2024-11-20"):
         llm_api = GPTCallAPI(api_base=args.api_base,
                              api_key=args.api_key,
                              model_name=args.llm_model,

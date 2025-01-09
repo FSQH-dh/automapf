@@ -6,12 +6,7 @@ My current code is to find the task with the shortest time to complete first, bu
 
 Your goal is to improve this schedule_plan function for the task scheduler, after reading and understanding the <key code> of task scheduler below.
 
-As an example, the schedule_plan function can be:
-'''
-// start
-void schedule_plan(int time_limit, std::vector<int> & proposed_schedule,  SharedEnvironment* env){...}
-// end
-'''
+Note that you need to return all the code
 
 To replace the original code:
 '''
@@ -92,9 +87,9 @@ void schedule_plan(int time_limit, std::vector<int> & proposed_schedule,  Shared
 
 Tips:
 1) Your schedule_plan function code must start with '''// start''' and end with '''// end'''
-2) Your schedule_plan function code must be different from original code
+2) Your return all the code must start with '''// start''' and end with '''// end'''
 3) Make sure your schedule_plan function code can be executed correctly
-
+Note that you need to return the entire code, not just the schedule_plan function
 
 <key code> of task scheduler is:
 """

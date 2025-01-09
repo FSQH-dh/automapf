@@ -91,12 +91,6 @@ Experiment results of your provided code are:
 {{ replace_code }}
 ###
 
-Your schedule_plan function could use useful variables from the solver as inputs, as an example, the schedule_plan function must be written in the following form:
-'''
-// start
-void schedule_plan(int time_limit, std::vector<int> & proposed_schedule,  SharedEnvironment* env){...}
-// end
-'''
 
 Based on the best code you provided in the last iteration:
 '''
@@ -107,8 +101,9 @@ Based on the best code you provided in the last iteration:
 
 Tips:
 1) less execution time means schedule_plan function is better, and execution time of original code is {{ original_time }} seconds.
-2) Your schedule_plan function code must start with '''// start''' and end with '''// end'''
+2) Your return all the code must start with '''// start''' and end with '''// end'''
 3) Your schedule_plan function code must be different from previous codes
+Note that you need to return the entire code, not just the schedule_plan function
 
 <key code> of task scheduler is:
 """

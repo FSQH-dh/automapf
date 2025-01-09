@@ -25,6 +25,7 @@ idx_next_loc=0&&agent_assigned != -1); However, once the robot starts its assign
 - `task_pool`: `unordered_map<int, Task>`, this `unordered_map` stores all revealed but unfinished tasks, using `task_id` as keys.
 - `new_tasks`: `vector<int>`, the `task_id` of the newly revealed tasks at the current timestep.
 - `new_freeagents`: `vector<int>`, the `id` of the newly freed robots (robots have their tasks completed) at the current timestep.
+6)The get_h function does not need to be modified, it is already defined elsewhere
 {{ other_tips }}
 
 <key code> of task scheduler is:

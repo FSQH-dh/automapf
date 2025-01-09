@@ -15,7 +15,7 @@ import warnings
 @ray.remote
 
 def synchronized_asked(coder_args, evaluator_args, global_id, args):
-    if args.llm_model == "gpt-4-turbo":
+    if args.llm_model in ("gpt-4-turbo,gpt-4o-mini,gpt-4o-2024-11-20"):
         llm_api = GPTCallAPI(api_base=args.api_base,
                              api_key=args.api_key,
                              model_name=args.llm_model,
@@ -173,6 +173,7 @@ def main(args):
                                                       args=args)
                 resultsUpdatePerIteration(results, result, {}, {})
                 break
+        print(results["time"])
         print(results["time"]["0"])
     else:
         results["time"]["0"] = args.original_result['time']
@@ -281,7 +282,7 @@ def main(args):
                 repetition_dict[global_id] = answer_code
         print("start to run generated codes ...")
         start_time = time.time()
-        filenames = [str(global_id) + "_" + str(num) + ".txt" for global_id in id_list for num in
+        filenames = [str(0) + "_" + str(num) + ".txt" for global_id in id_list for num in
                      range(args.data_parallel_size)]
         print("filenames: ", filenames)
         while True:
@@ -368,7 +369,7 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Run EasySAT experiment with LLM integration.')
     parser.add_argument('--config', type=str, default='./examples/EasySAT/config.yaml', help='Path to the config file')
-    for i in range(10):
+    for i in range(10000):
         try:
             # 解析命令行参数
             args = parser.parse_args()

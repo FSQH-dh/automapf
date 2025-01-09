@@ -23,17 +23,19 @@ class ExecutionWorker():
             return True
 
         elif platform.system() == 'Linux':
+            print(format((id - 1) % batch_size))
             exec_code = os.system(
-                "cmake -B build ./ -DCMAKE_BUILD_TYPE=Release -B ./temp/EasySAT_{}".format((id - 1) % batch_size))
+                "cmake -DCMAKE_BUILD_TYPE=Release ./temp/EasySAT_{} -B ./temp/EasySAT_{}/build".format((id - 1) % batch_size,(id - 1) % batch_size))
+            print(exec_code)
             if exec_code != 0:
                 return False
             exec_code = os.system(
-                "make build -j -C ./temp/EasySAT_{}/build".format((id - 1) % batch_size))
+                "make -j  -C ./temp/EasySAT_{}/build".format((id - 1) % batch_size))
             if exec_code != 0:
                 return False
             for i in range(data_parallel_size):
                 exec_code = os.system(
-                    "./temp/EasySAT_{}/EasySAT/build/lifelong --inputFile ./temp/EasySAT_{}/EasySAT/example_problems/random.domain/random_32_32_20_100.json -o test.json  &".format((id - 1) % batch_size,(id - 1) % batch_size))
+                    "./temp/EasySAT_{}/build/lifelong --inputFile ./temp/EasySAT_{}/example_problems/random.domain/random_32_32_20_100.json -o test.json  &".format((id - 1) % batch_size,(id - 1) % batch_size))
                 # subprocess.call("start ./temp/EasySAT_{}/EasySAT.exe {} ./temp/EasySAT_{}/".format((id-1) % batch_size, id, (id-1) % batch_size))
                 if exec_code != 0:
                     return False

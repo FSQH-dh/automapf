@@ -33,9 +33,9 @@ As an example, the {{ task }} can be:
 '''
 to replace the original {{ task }} code.
 
-
+Note that you need to return all the code
 Tips:
-1) Your {{ task }} code must start with '''// start''' and end with '''// end'''
+1)  Your return all the code must start with '''// start''' and end with '''// end'''
 2) Less execution time and lower PAR-2  mean better performance.
 3) Feel free to unleash your creativity and provide correct and enhanced code. (You may consult code from previous iterations for insights, but do not copy directly).
 4) Your new {{ task }} code must be different from previous codes.

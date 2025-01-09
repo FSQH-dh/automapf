@@ -1,26 +1,28 @@
 iteration_num: 5
-batch_size: 2
+batch_size: 1
 data_parallel_size: 1
 devoid_duplication: false
 #llm_model: "gpt-4-turbo"
-llm_model: "deepseek-chat"
+#llm_model: "deepseek-chat"
 #llm_model: "zhipu"
-timeout: 8000
+#llm_model: "gpt-4o-mini"
+llm_model: "gpt-4o-2024-11-20"
+timeout: 80000
 data_dir: "./temp/data_train"
 project: "EasySAT/"
-task: "rephase_function/"
+task: "bump_var_function/"
 original: true
 original_result: {'time':1,'PAR-2':2}
 agent_type: 'advisor-coder-evaluator' # ['advisor-coder-evaluator','coder-evaluator','advisor-coder', 'coder-only']
-agent_args_folder: './examples/EasySAT/rephase_function' # advisor, coder , evaluator PROMPT with their args
+agent_args_folder: './examples/EasySAT/bump_var_function' # advisor, coder , evaluator PROMPT with their args
 temperature: 0.8 # llm-temperature
 NeedEval: True
-#api_base: "**"
+#api_base: "https://open.bigmodel.cn"
 #api_key: "**"
-#api_base: "**"
-#api_key: "**"
-api_base: "**"
+api_base: "*"
 api_key: "**"
+#api_base: "*"
+#api_key: "**"
 SAT_solver_file_path: './examples/EasySAT/original_MAPF/EasySAT.cpp'
 eval_timeout: 5
 results_save_path: './temp/eval_results/'
