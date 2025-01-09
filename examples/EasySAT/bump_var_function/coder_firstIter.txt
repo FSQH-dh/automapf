@@ -1,0 +1,34 @@
+You are a MAPF researcher trying to write the {{ task }} to help task scheduler escape from local optimum.
+{{ description }}
+{{ modification_direction }}
+
+Your goal is to improve {{ task }} for the task scheduler, after reading and understanding the <key code> of task scheduler below.
+
+As an example, the format of {{ task }} can be:
+'''
+// start
+{{ code_format }}
+// end
+'''
+
+To replace the original code:
+'''
+// start
+{{ origin_target_code }}
+// end
+'''
+
+Tips:
+1) Your {{ task }} code must start with '''// start''' and end with '''// end'''
+2) Feel free to unleash your creativity and provide your improved and correct code. (Pay attention to correct namespace.)
+3) Your {{ task }} code must be different from original codes.
+4) You can only modify the current {{ task }} and use the existing external variables (e.g. variables that defined in schedule_plan).
+5) If you need to add global variables, you can add new global variables before the {{task}} function.
+{{ other_tips }}
+
+<key code> of task scheduler is:
+"""
+{{ origin_key_code }}
+"""
+
+Take a deep breath and think it carefully. Then respond in correct format!

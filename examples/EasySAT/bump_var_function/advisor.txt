@@ -1,0 +1,35 @@
+You are a MAPF researcher trying to write {{ task }} to help the task scheduler get rid of local optimality.
+Your goal is to write a {{ task }} for the task scheduler to help it restart its search and escape the local optimal after reading and understanding the <key code> for the task scheduler below.
+Your answer must follow the following json format:
+{
+    "description":"Provide a concise yet accurate description of the {{ task }} and show its application ( also include key variables.);",
+    "modification_direction":["some possible directions to improve the {{ task }}, feel free to explore!",],
+}
+
+Tips:
+1) You must traverse all possible position of <key code> if you want to modify the {{ task }}
+2) You need to give us some advice to modify the {{ task }}. e.g. some potential directions to change the heuristics. (The directions should be feasible)
+3) Notice that, you can only change {{ task }}.
+4)A task contains a list of multiple locations
+In locations, the task ID is task_id, the robot ID is agent_assigned, and the location index of the next task that is not completed is idx_next_loc
+. Each task needs to visit these locations in sequence.
+Tasks can be reassigned to other robots when the first task has not been completed (i.e
+idx_next_loc=0&&agent_assigned != -1); However, once the robot starts its assigned task (completing the first item of the task), the task can no longer be reassigned to other robots.
+5)The parameters in env are as follows:
+-  `num_of_agents`: `int`, the total team size.
+-  `rows`: `int`, the number of rows of the map.
+-  `cols`: `int`, the number of columns of the map.
+-  `goal_locations`: vector of vector of `pair<int,int>`: current goal location of each robot, which is the first unfinished errand of the scheduled task. The first int is the goal location, and the second int indicates the timestep that the task was allocated.
+-  `curr_states`: vector of `State`, the current state for each robot at the current time step.
+- `curr_task_schedule`: `vector<int>`, the current schedule return by the Task Manager. `curr_task_schedule[i]` indicates the `task_id` scheduled for robot `i`. `-1` indicates a robot has no scheduled task.
+- `task_pool`: `unordered_map<int, Task>`, this `unordered_map` stores all revealed but unfinished tasks, using `task_id` as keys.
+- `new_tasks`: `vector<int>`, the `task_id` of the newly revealed tasks at the current timestep.
+- `new_freeagents`: `vector<int>`, the `id` of the newly freed robots (robots have their tasks completed) at the current timestep.
+{{ other_tips }}
+
+<key code> of task scheduler is:
+"""
+{{ origin_key_code }}
+"""
+
+Take a deep breath and think it step by step. Then respond strictly in JSON format!
